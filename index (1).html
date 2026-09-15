@@ -1,0 +1,2006 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+
+  <title>KASI Delica | Big Flavour</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface2: #171717;
+      --gold: #ffc400;
+      --gold-light: #ffdb55;
+      --white: #f7f7f7;
+      --muted: #999;
+      --border: rgba(255,196,0,.16);
+      --radius: 22px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(
+          circle at 85% 0%,
+          rgba(255,196,0,.08),
+          transparent 30%
+        ),
+        var(--bg);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: auto;
+    }
+
+    /* =========================
+       ANNOUNCEMENT
+    ========================== */
+
+    .announcement {
+      background: #0c0c0c;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+      padding: 9px 15px;
+      color: #aaa;
+      font-size: .8rem;
+      letter-spacing: .05em;
+    }
+
+    .announcement strong {
+      color: var(--gold);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      min-height: 760px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav {
+      padding: 22px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: Poppins, sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: #080808;
+      border-radius: 12px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: #ccc;
+      font-size: .9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .cart-trigger {
+      border: 1px solid rgba(255,196,0,.25);
+      background: rgba(255,196,0,.06);
+      color: white;
+      padding: 10px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-count {
+      min-width: 22px;
+      height: 22px;
+      background: var(--gold);
+      color: #080808;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Poppins, sans-serif;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 7vw, 6.7rem);
+      margin: 0;
+    }
+
+    h1 span {
+      color: var(--gold);
+    }
+
+    .hero-copy {
+      color: #aaa;
+      max-width: 580px;
+      margin-top: 25px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 14px 19px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #080808;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* HERO IMAGE */
+
+    .hero-art {
+      display: grid;
+      place-items: center;
+      min-height: 430px;
+    }
+
+    .hero-ring {
+      width: min(430px, 90vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(255,196,0,.25);
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,196,0,.15),
+          transparent 65%
+        );
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-card {
+      width: 73%;
+      aspect-ratio: .88;
+      border-radius: 28px;
+      background: #141414;
+      padding: 12px;
+      transform: rotate(5deg);
+      box-shadow: 0 25px 70px rgba(0,0,0,.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .floating-price {
+      position: absolute;
+      right: -10px;
+      bottom: 35px;
+      background: var(--gold);
+      color: #080808;
+      padding: 14px 18px;
+      border-radius: 15px;
+      font-weight: 900;
+      transform: rotate(-4deg);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 35px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-size: .72rem;
+      font-weight: 800;
+      margin-bottom: 9px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 470px;
+      font-size: .95rem;
+    }
+
+    /* =========================
+       MENU
+    ========================== */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: linear-gradient(
+        145deg,
+        #171717,
+        #101010
+      );
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .2s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border);
+    }
+
+    .menu-image {
+      height: 245px;
+      margin: 9px;
+      border-radius: 17px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .menu-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .menu-info {
+      padding: 14px 17px 18px;
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+    }
+
+    .menu-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .price {
+      color: var(--gold);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .menu-desc {
+      color: #888;
+      font-size: .82rem;
+      min-height: 40px;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 11px;
+      border-radius: 12px;
+      background: rgba(255,196,0,.06);
+      border: 1px solid rgba(255,196,0,.2);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .add-btn:hover {
+      background: var(--gold);
+      color: #080808;
+    }
+
+    /* =========================
+       COMBOS
+    ========================== */
+
+    .combos-section {
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(255,196,0,.025),
+          transparent
+        );
+    }
+
+    .combo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .combo-card {
+      min-height: 280px;
+      padding: 25px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,196,0,.16);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,196,0,.08),
+          rgba(255,255,255,.025)
+        );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .2s;
+    }
+
+    .combo-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,196,0,.35);
+    }
+
+    .combo-number {
+      color: rgba(255,196,0,.6);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+    }
+
+    .combo-card h3 {
+      margin: 25px 0 10px;
+      font-size: 1.35rem;
+    }
+
+    .combo-card p {
+      color: #999;
+      font-size: .85rem;
+    }
+
+    .combo-price {
+      color: var(--gold);
+      font-family: Poppins, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin: 18px 0;
+    }
+
+    /* =========================
+       INFO
+    ========================== */
+
+    .about-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .info-cell {
+      background: #111;
+      padding: 25px;
+    }
+
+    .info-cell strong {
+      display: block;
+      color: var(--gold);
+      font-family: Poppins, sans-serif;
+      margin-bottom: 5px;
+    }
+
+    .info-cell span {
+      color: #888;
+      font-size: .86rem;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #060606;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 55px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+    }
+
+    .footer-brand {
+      font-family: Poppins, sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .footer-brand span {
+      color: var(--gold);
+    }
+
+    .footer-copy {
+      color: #888;
+      max-width: 420px;
+      font-size: .9rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-list div {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #aaa;
+      font-size: .9rem;
+    }
+
+    .contact-list strong {
+      min-width: 75px;
+      color: white;
+    }
+
+    .map-link {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top: 40px;
+      padding-top: 20px;
+      color: #555;
+      font-size: .75rem;
+    }
+
+    /* =========================
+       CART
+    ========================== */
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      width: min(440px,100%);
+      height: 100%;
+      background: #101010;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translateX(100%);
+      transition: .25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-head {
+      padding: 22px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-head h3 {
+      margin: 0;
+    }
+
+    .close-cart {
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      background: #191919;
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px 22px;
+    }
+
+    .empty-cart {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #777;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .cart-item strong {
+      display: block;
+      font-size: .92rem;
+    }
+
+    .cart-item small {
+      color: #777;
+    }
+
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #191919;
+      color: white;
+      cursor: pointer;
+    }
+
+    .cart-item-price {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .cart-foot {
+      padding: 18px 22px 22px;
+      background: #0c0c0c;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .total-row span {
+      color: #888;
+    }
+
+    .total-row strong {
+      color: var(--gold);
+      font-family: Poppins, sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .checkout {
+      width: 100%;
+    }
+
+    .cart-note {
+      text-align: center;
+      color: #666;
+      font-size: .7rem;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 900px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero-art {
+        min-height: 330px;
+      }
+
+      .menu-grid,
+      .combo-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .about-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 680px) {
+
+      header {
+        min-height: 720px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 40px 0 80px;
+      }
+
+      h1 {
+        font-size: clamp(3rem,16vw,5rem);
+      }
+
+      .hero-copy {
+        font-size: .95rem;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-ring {
+        width: 310px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-description {
+        margin-top: 15px;
+      }
+
+      .menu-grid,
+      .combo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-image {
+        height: 270px;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .container {
+        width: calc(100% - 22px);
+      }
+
+      .hero-ring {
+        width: 285px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       TOP BAR
+  ========================== -->
+
+  <div class="announcement">
+    OPEN <strong>8AM–8PM</strong>
+    · KOMGA
+    · ORDER FRESH VIA WHATSAPP
+  </div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header id="home">
+
+    <nav>
+      <div class="container nav-inner">
+
+        <a href="#home" class="brand">
+          <span class="brand-mark">K</span>
+          <span>KASI Delica</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#menu">Menu</a>
+          <a href="#combos">Combos</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button
+          class="cart-trigger"
+          id="openCart"
+          type="button"
+        >
+          Order
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            Kasi flavour. Properly served.
+          </div>
+
+          <h1>
+            Good food.<br>
+            <span>Kasi flavour.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Your kasi stop for loaded chips, spiral chips,
+            meaty bones, dombolo, milkshakes and combos made
+            for sharing... or not.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/27725384918?text=Hi%20KASI%20Delica%2C%20I%27d%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener"
+            >
+              Order via WhatsApp ↗
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="#menu"
+            >
+              Explore the menu
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- HERO PHOTO -->
+
+        <div class="hero-art">
+
+          <div class="hero-ring">
+
+            <div class="hero-card">
+
+              <!-- CHANGE THIS IMAGE IF YOU WANT A DIFFERENT HERO PHOTO -->
+              <img
+                src="images/kasi delica.jpeg"
+                alt="KASI Delica featured food"
+              >
+
+              <div class="floating-price">
+                From R15 yeses
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <section id="menu">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="section-kicker">
+              The menu
+            </div>
+
+            <h2>
+              Pick your pleasure.
+            </h2>
+          </div>
+
+          <p class="section-description">
+            Add your favourites to your order.
+            Prices marked "+" can vary depending
+            on portion or toppings.
+          </p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+          <!-- FRIED CHIPS -->
+
+          <article class="menu-card">
+
+            <div class="menu-image">
+
+              <img
+                src="images/fried-chips.jpeg"
+                alt="Fried chips"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Fried chips
+                </h3>
+
+                <span class="price">
+                  R15+
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Golden, crispy and made for sauce,
+                spice and everything nice.
+              </p>
+
+              <button
+                class="add-btn"
+                data-name="Fried chips"
+                data-price="15"
+              >
+                Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- SPIRAL CHIPS -->
+
+          <article class="menu-card">
+
+            <div class="menu-image">
+
+              <img
+                src="images/spiral-chips.jpeg"
+                alt="Spiral chips"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Spiral Chips
+                </h3>
+
+                <span class="price">
+                  R15
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Crispy spiral cut goodness with
+                serious crunch.
+              </p>
+
+              <button
+                class="add-btn"
+                data-name="Spiral Chips"
+                data-price="15"
+              >
+                Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- MEATY BONES -->
+
+          <article class="menu-card">
+
+            <div class="menu-image">
+
+              <img
+                src="images/meaty bones.jpeg"
+                alt="Meaty bones"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Meaty Bones
+                </h3>
+
+                <span class="price">
+                  R20+
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Tender, saucy comfort food with
+                that unmistakable kasi kick.
+              </p>
+
+              <button
+                class="add-btn"
+                data-name="Meaty Bones"
+                data-price="20"
+              >
+                Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- DOMBOLO -->
+
+          <article class="menu-card">
+
+            <div class="menu-image">
+
+              <img
+                src="images/dombolo.jpeg"
+                alt="Dombolo"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Dombolo
+                </h3>
+
+                <span class="price">
+                  R20+
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Soft, filling and built for soaking
+                up every bit of flavour.
+              </p>
+
+              <button
+                class="add-btn"
+                data-name="Dombolo"
+                data-price="20"
+              >
+                Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- MILKSHAKE -->
+
+          <article class="menu-card">
+
+            <div class="menu-image">
+
+              <img
+                src="images/milkshake.jpeg"
+                alt="Milkshake"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Milkshake
+                </h3>
+
+                <span class="price">
+                  R20
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Cold, creamy and the perfect
+                sidekick to your order.
+              </p>
+
+              <button
+                class="add-btn"
+                data-name="Milkshake"
+                data-price="20"
+              >
+                Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMBOS
+    ========================== -->
+
+    <section
+      class="combos-section"
+      id="combos"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="section-kicker">
+              Combo deals
+            </div>
+
+            <h2>
+              More food. More value.
+            </h2>
+
+          </div>
+
+          <p class="section-description">
+            Easy choices when one item simply
+            isn't enough.
+          </p>
+
+        </div>
+
+
+        <div class="combo-grid">
+
+          <!-- COMBO 1 -->
+
+          <article class="combo-card">
+
+            <div>
+
+              <span class="combo-number">
+                COMBO 01
+              </span>
+
+              <h3>
+                Milkshake + Spiral + Fried Chips
+              </h3>
+
+              <p>
+                A cold milkshake with two
+                crispy chip favourites.
+              </p>
+
+            </div>
+
+            <div class="combo-price">
+              R50
+            </div>
+
+            <button
+              class="add-btn"
+              data-name="R50 Milkshake, Spiral & Fried chips"
+              data-price="50"
+            >
+              Add Combo
+            </button>
+
+          </article>
+
+
+          <!-- COMBO 2 -->
+
+          <article class="combo-card">
+
+            <div>
+
+              <span class="combo-number">
+                COMBO 02
+              </span>
+
+              <h3>
+                Russian Sausage + Spiral + Fried Chips
+              </h3>
+
+              <p>
+                A hearty, crunchy combo when
+                you're properly hungry.
+              </p>
+
+            </div>
+
+            <div class="combo-price">
+              R50
+            </div>
+
+            <button
+              class="add-btn"
+              data-name="R50 Russian sausage, Spiral & Fried chips"
+              data-price="50"
+            >
+              Add Combo
+            </button>
+
+          </article>
+
+
+          <!-- COMBO 3 -->
+
+          <article class="combo-card">
+
+            <div>
+
+              <span class="combo-number">
+                COMBO 03
+              </span>
+
+              <h3>
+                Lauded Saucy Combo
+              </h3>
+
+              <p>
+                Fried chips + spiral chips
+                with a saucy finish.
+              </p>
+
+            </div>
+
+            <div class="combo-price">
+              R30
+            </div>
+
+            <button
+              class="add-btn"
+              data-name="R30 Lauded Saucy Combo (Fried chips & spiral chips)"
+              data-price="30"
+            >
+              Add Combo
+            </button>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         INFO
+    ========================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="about-strip">
+
+          <div class="info-cell">
+
+            <strong>
+              8AM — 8PM
+            </strong>
+
+            <span>
+              Open daily for your cravings.
+            </span>
+
+          </div>
+
+          <div class="info-cell">
+
+            <strong>
+              WhatsApp Orders
+            </strong>
+
+            <span>
+              Quick, direct and easy ordering.
+            </span>
+
+          </div>
+
+          <div class="info-cell">
+
+            <strong>
+              Komga 4950
+            </strong>
+
+            <span>
+              Find us on Main road, Siviwe.
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer id="contact">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-brand">
+            KASI <span>Delica</span>
+          </div>
+
+          <p class="footer-copy">
+            Big flavour, local energy and food
+            worth coming back for. Place your
+            order on WhatsApp and we'll take
+            it from there.
+          </p>
+
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/27725384918?text=Hi%20KASI%20Delica%2C%20I%27d%20like%20to%20place%20an%20order."
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp us ↗
+          </a>
+
+        </div>
+
+
+        <div class="contact-list">
+
+          <div>
+            <strong>Hours</strong>
+            <span>8am–8pm</span>
+          </div>
+
+          <div>
+            <strong>Contact</strong>
+
+            <a href="tel:+27725384918">
+              072 538 4918
+            </a>
+
+          </div>
+
+          <div>
+
+            <strong>Address</strong>
+
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
+              target="_blank"
+              rel="noopener"
+            >
+              2854 Siviwe, Main road, Komga 4950
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        © <span id="year"></span>
+        KASI Delica.
+        All rights reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       SHOPPING CART
+  ========================== -->
+
+  <div
+    class="cart-overlay"
+    id="cartOverlay"
+    aria-hidden="true"
+  >
+
+    <aside
+      class="cart-drawer"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <div class="cart-head">
+
+        <h3>
+          Your order
+        </h3>
+
+        <button
+          class="close-cart"
+          id="closeCart"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        class="cart-items"
+        id="cartItems"
+      >
+
+        <div class="empty-cart">
+
+          <div>
+
+            <div style="font-size:2rem;">
+              ＋
+            </div>
+
+            <strong>
+              Your order is empty
+            </strong>
+
+            <p>
+              Add something tasty from
+              the menu.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="cart-foot">
+
+        <div class="total-row">
+
+          <span>
+            Total
+          </span>
+
+          <strong id="cartTotal">
+            R0
+          </strong>
+
+        </div>
+
+        <button
+          class="btn btn-primary checkout"
+          id="checkoutBtn"
+          type="button"
+        >
+          Checkout on WhatsApp ↗
+        </button>
+
+        <p class="cart-note">
+          Your order will open in WhatsApp
+          as a pre-filled message.
+        </p>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    const WHATSAPP_NUMBER = "27725384918";
+
+    const cart = [];
+
+
+    const cartOverlay =
+      document.getElementById("cartOverlay");
+
+    const cartItems =
+      document.getElementById("cartItems");
+
+    const cartTotal =
+      document.getElementById("cartTotal");
+
+    const cartCount =
+      document.getElementById("cartCount");
+
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    function money(value) {
+      return `R${value}`;
+    }
+
+
+    function addToCart(name, price) {
+
+      const existing =
+        cart.find(item => item.name === name);
+
+
+      if (existing) {
+
+        existing.qty++;
+
+      } else {
+
+        cart.push({
+          name: name,
+          price: Number(price),
+          qty: 1
+        });
+
+      }
+
+
+      renderCart();
+
+      openCart();
+    }
+
+
+    function changeQty(name, amount) {
+
+      const item =
+        cart.find(item => item.name === name);
+
+      if (!item) return;
+
+
+      item.qty += amount;
+
+
+      if (item.qty <= 0) {
+
+        const index =
+          cart.findIndex(
+            item => item.name === name
+          );
+
+        cart.splice(index, 1);
+      }
+
+
+      renderCart();
+    }
+
+
+    function renderCart() {
+
+      const totalItems =
+        cart.reduce(
+          (sum, item) => sum + item.qty,
+          0
+        );
+
+
+      const total =
+        cart.reduce(
+          (sum, item) =>
+            sum + item.price * item.qty,
+          0
+        );
+
+
+      cartCount.textContent =
+        totalItems;
+
+      cartTotal.textContent =
+        money(total);
+
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+          <div class="empty-cart">
+
+            <div>
+
+              <div style="font-size:2rem;">
+                ＋
+              </div>
+
+              <strong>
+                Your order is empty
+              </strong>
+
+              <p>
+                Add something tasty
+                from the menu.
+              </p>
+
+            </div>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+
+      cartItems.innerHTML =
+        cart.map(item => `
+
+          <div class="cart-item">
+
+            <div>
+
+              <strong>
+                ${escapeHtml(item.name)}
+              </strong>
+
+              <small>
+                ${money(item.price)} each
+              </small>
+
+              <div class="cart-controls">
+
+                <button
+                  class="qty-btn"
+                  type="button"
+                  data-action="minus"
+                  data-name="${escapeAttr(item.name)}"
+                >
+                  −
+                </button>
+
+                <span>
+                  ${item.qty}
+                </span>
+
+                <button
+                  class="qty-btn"
+                  type="button"
+                  data-action="plus"
+                  data-name="${escapeAttr(item.name)}"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="cart-item-price">
+              ${money(item.price * item.qty)}
+            </div>
+
+          </div>
+
+        `).join("");
+
+
+      cartItems
+        .querySelectorAll(".qty-btn")
+        .forEach(button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              changeQty(
+                button.dataset.name,
+                button.dataset.action === "plus"
+                  ? 1
+                  : -1
+              );
+
+            }
+          );
+
+        });
+
+    }
+
+
+    function escapeHtml(value) {
+
+      return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function escapeAttr(value) {
+
+      return escapeHtml(value);
+
+    }
+
+
+    function openCart() {
+
+      cartOverlay.classList.add("open");
+
+      cartOverlay.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeCart() {
+
+      cartOverlay.classList.remove("open");
+
+      cartOverlay.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    /* ADD TO CART BUTTONS */
+
+    document
+      .querySelectorAll(".add-btn")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            addToCart(
+              button.dataset.name,
+              button.dataset.price
+            );
+
+          }
+        );
+
+      });
+
+
+    /* OPEN CART */
+
+    document
+      .getElementById("openCart")
+      .addEventListener(
+        "click",
+        openCart
+      );
+
+
+    /* CLOSE CART */
+
+    document
+      .getElementById("closeCart")
+      .addEventListener(
+        "click",
+        closeCart
+      );
+
+
+    /* CLICK OUTSIDE CART */
+
+    cartOverlay.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === cartOverlay
+        ) {
+          closeCart();
+        }
+
+      }
+    );
+
+
+    /* ESC KEY */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (event.key === "Escape") {
+          closeCart();
+        }
+
+      }
+    );
+
+
+    /* CHECKOUT */
+
+    document
+      .getElementById("checkoutBtn")
+      .addEventListener(
+        "click",
+        () => {
+
+          if (cart.length === 0) {
+
+            alert(
+              "Your order is empty. Add something from the menu first."
+            );
+
+            return;
+          }
+
+
+          const total =
+            cart.reduce(
+              (sum, item) =>
+                sum + item.price * item.qty,
+              0
+            );
+
+
+          const orderLines =
+            cart.map(item =>
+              `• ${item.qty} × ${item.name} — ${money(
+                item.price * item.qty
+              )}`
+            );
+
+
+          const message =
+
+`Hi KASI Delica! 👋
+
+I'd like to place this order:
+
+${orderLines.join("\n")}
+
+Total: ${money(total)}
+
+Please confirm my order. Thank you!`;
+
+
+          const whatsappURL =
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+
+          window.open(
+            whatsappURL,
+            "_blank",
+            "noopener,noreferrer"
+          );
+
+        }
+      );
+
+
+    /* INITIAL CART */
+
+    renderCart();
+
+  </script>
+
+</body>
+</html>
+```
