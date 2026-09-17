@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -430,6 +429,49 @@
       color: #080808;
     }
 
+    /* Custom Price Inputs */
+    .custom-price-container {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .custom-price-wrapper {
+      position: relative;
+      flex: 1;
+    }
+
+    .custom-price-wrapper span {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .custom-price-input {
+      width: 100%;
+      padding: 11px 11px 11px 28px;
+      border-radius: 12px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+      font-family: inherit;
+      font-weight: 700;
+    }
+    
+    .custom-price-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .custom-price-container .add-btn {
+      width: auto;
+      flex: 0 0 70px;
+      padding: 11px 0;
+    }
+
     /* =========================
        COMBOS
     ========================== */
@@ -557,6 +599,24 @@
       max-width: 420px;
       font-size: .9rem;
     }
+    
+    .social-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+    
+    .btn-facebook {
+      background: #1877F2;
+      color: white;
+    }
+
+    .btn-facebook:hover {
+      background: #166fe5;
+      transform: translateY(-2px);
+    }
 
     .contact-list {
       display: grid;
@@ -650,9 +710,12 @@
       font-size: 1.2rem;
     }
 
-    .cart-items {
+    .cart-body {
       flex: 1;
       overflow-y: auto;
+    }
+
+    .cart-items {
       padding: 15px 22px;
     }
 
@@ -702,9 +765,65 @@
       color: var(--gold);
       font-weight: 800;
     }
+    
+    /* CART OPTIONS: FORMS & DETAILS */
+    .cart-options {
+      padding: 0 22px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
+    .option-group strong {
+      display: block;
+      color: white;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+      font-family: inherit;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-input::placeholder {
+      color: #666;
+    }
+
+    .option-group label {
+      color: #ccc;
+      font-size: 0.85rem;
+      margin-right: 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    /* Compact Cart Footer Styling */
     .cart-foot {
-      padding: 18px 22px 22px;
+      padding: 12px 18px 14px;
       background: #0c0c0c;
       border-top: 1px solid rgba(255,255,255,.07);
     }
@@ -712,27 +831,108 @@
     .total-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 15px;
+      margin-bottom: 2px;
+    }
+
+    .total-row.grand-total {
+      margin-bottom: 10px;
+      margin-top: 6px;
+      border-top: 1px dashed rgba(255,255,255,.1);
+      padding-top: 6px;
     }
 
     .total-row span {
       color: #888;
+      font-size: 0.8rem;
     }
 
     .total-row strong {
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    .total-row.grand-total strong {
       color: var(--gold);
       font-family: Poppins, sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.15rem;
+    }
+
+    .discount-text {
+      color: #4CAF50 !important;
     }
 
     .checkout {
       width: 100%;
     }
 
+    .cart-foot .btn {
+      padding: 10px 14px;
+      font-size: 0.9rem;
+    }
+
     .cart-note {
       text-align: center;
       color: #666;
-      font-size: .7rem;
+      font-size: .65rem;
+      margin-bottom: 0;
+    }
+
+    /* =========================
+       RECEIPT MODAL
+    ========================== */
+
+    .receipt-overlay {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200; 
+    }
+
+    .receipt-card {
+      background: #111;
+      border: 1px solid rgba(255,196,0,.2);
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 420px;
+      padding: 25px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 70px rgba(0,0,0,.8);
+    }
+
+    .receipt-card h3 {
+      margin: 0 0 10px 0;
+      color: var(--gold);
+      text-align: center;
+    }
+
+    .receipt-content {
+      overflow-y: auto;
+      margin: 10px 0 20px 0;
+      font-size: 0.95rem;
+      color: #f7f7f7;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      background: #080808;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,.1);
+    }
+
+    .receipt-content strong {
+      color: var(--gold);
+    }
+
+    .receipt-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .receipt-actions .btn {
+      flex: 1;
+      padding: 14px 0;
+      font-size: 0.95rem;
     }
 
     /* =========================
@@ -814,6 +1014,10 @@
 
       .menu-image {
         height: 270px;
+      }
+      
+      .receipt-actions {
+        flex-direction: column;
       }
     }
 
@@ -898,23 +1102,12 @@
           </p>
 
           <div class="hero-actions">
-
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/27647925594?text=Hi%20KASI%20Delica%2C%20I%27d%20like%20to%20place%20an%20order."
-              target="_blank"
-              rel="noopener"
-            >
-              Order via WhatsApp ↗
-            </a>
-
             <a
               class="btn btn-secondary"
               href="#menu"
             >
               Explore the menu
             </a>
-
           </div>
 
         </div>
@@ -983,7 +1176,7 @@
 
         <div class="menu-grid">
 
-          <!-- FRIED CHIPS -->
+          <!-- FRIED CHIPS (Custom Price) -->
 
           <article class="menu-card">
 
@@ -1005,23 +1198,27 @@
                 </h3>
 
                 <span class="price">
-                  R15+
+                  R20+
                 </span>
 
               </div>
 
               <p class="menu-desc">
-                Golden, crispy and made for sauce,
-                spice and everything nice.
+                Golden, crispy and made for sauce. Enter your portion size (Min R20).
               </p>
 
-              <button
-                class="add-btn"
-                data-name="Fried chips"
-                data-price="15"
-              >
-                Add to Order
-              </button>
+              <div class="custom-price-container">
+                <div class="custom-price-wrapper">
+                  <span>R</span>
+                  <input type="number" id="price-fried-chips" class="custom-price-input" min="20" value="20" step="1">
+                </div>
+                <button
+                  class="add-btn"
+                  onclick="addCustomToCart('Fried chips', 'price-fried-chips')"
+                >
+                  Add
+                </button>
+              </div>
 
             </div>
 
@@ -1062,8 +1259,7 @@
 
               <button
                 class="add-btn"
-                data-name="Spiral Chips"
-                data-price="15"
+                onclick="addToCart('Spiral Chips', 15)"
               >
                 Add to Order
               </button>
@@ -1107,8 +1303,7 @@
 
               <button
                 class="add-btn"
-                data-name="Meaty Bones"
-                data-price="20"
+                onclick="addToCart('Meaty Bones', 20)"
               >
                 Add to Order
               </button>
@@ -1118,7 +1313,7 @@
           </article>
 
 
-          <!-- DOMBOLO -->
+          <!-- DOMBOLO (Custom Price) -->
 
           <article class="menu-card">
 
@@ -1146,17 +1341,21 @@
               </div>
 
               <p class="menu-desc">
-                Soft, filling and built for soaking
-                up every bit of flavour.
+                Soft, filling and built for soaking. Enter your size (Min R20).
               </p>
 
-              <button
-                class="add-btn"
-                data-name="Dombolo"
-                data-price="20"
-              >
-                Add to Order
-              </button>
+              <div class="custom-price-container">
+                <div class="custom-price-wrapper">
+                  <span>R</span>
+                  <input type="number" id="price-dombolo" class="custom-price-input" min="20" value="20" step="1">
+                </div>
+                <button
+                  class="add-btn"
+                  onclick="addCustomToCart('Dombolo', 'price-dombolo')"
+                >
+                  Add
+                </button>
+              </div>
 
             </div>
 
@@ -1197,8 +1396,7 @@
 
               <button
                 class="add-btn"
-                data-name="Milkshake"
-                data-price="20"
+                onclick="addToCart('Milkshake', 20)"
               >
                 Add to Order
               </button>
@@ -1276,8 +1474,7 @@
 
             <button
               class="add-btn"
-              data-name="R50 Milkshake, Spiral & Fried chips"
-              data-price="50"
+              onclick="addToCart('R50 Milkshake, Spiral & Fried chips', 50)"
             >
               Add Combo
             </button>
@@ -1312,8 +1509,7 @@
 
             <button
               class="add-btn"
-              data-name="R50 Russian sausage, Spiral & Fried chips"
-              data-price="50"
+              onclick="addToCart('R50 Russian sausage, Spiral & Fried chips', 50)"
             >
               Add Combo
             </button>
@@ -1348,8 +1544,7 @@
 
             <button
               class="add-btn"
-              data-name="R30 Lauded Saucy Combo (Fried chips & spiral chips)"
-              data-price="30"
+              onclick="addToCart('R30 Lauded Saucy Combo (Fried chips & spiral chips)', 30)"
             >
               Add Combo
             </button>
@@ -1441,14 +1636,25 @@
             it from there.
           </p>
 
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/2764792554?text=Hi%20KASI%20Delica%2C%20I%27d%20like%20to%20place%20an%20order."
-            target="_blank"
-            rel="noopener"
-          >
-            WhatsApp us ↗
-          </a>
+          <div class="social-btn-group">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/27742814132?text=Hi%20KASI%20Delica%2C%20I%27d%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp us ↗
+            </a>
+            
+            <a
+              class="btn btn-facebook"
+              href="https://www.facebook.com/share/1cpqJRkodB/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener"
+            >
+              Follow us on Facebook ↗
+            </a>
+          </div>
 
         </div>
 
@@ -1462,15 +1668,15 @@
 
           <div>
             <strong>Contact</strong>
-
+            
+            <a href="tel:+27742814132">
+              074 281 4132
+            </a>
+            <a>OR</a> 
             <a href="tel:+27647925594">
               064 792 5594 Somi
             </a>
-            <a>OR</a> 
-            <a href="tel:+27657971277">
-              065 797 1277 Azemahle
-            </a>
-
+            
           </div>
 
           <div>
@@ -1539,60 +1745,87 @@
       </div>
 
 
-      <div
-        class="cart-items"
-        id="cartItems"
-      >
-
-        <div class="empty-cart">
-
-          <div>
-
-            <div style="font-size:2rem;">
-              ＋
-            </div>
-
-            <strong>
-              Your order is empty
-            </strong>
-
-            <p>
-              Add something tasty from
-              the menu.
-            </p>
-
+      <!-- BODY WRAPPER FOR SCROLLING -->
+      <div class="cart-body">
+        
+        <div
+          class="cart-items"
+          id="cartItems"
+        >
+          <!-- Injected via JS -->
+        </div>
+        
+        <!-- ORDER OPTIONS (Forms, Delivery/Collection & Condiments) -->
+        <div class="cart-options" id="cartOptions" style="display: none;">
+          
+          <div class="option-group">
+            <strong>Your Details</strong>
+            <input type="text" id="custName" class="form-input" placeholder="Your Name">
+            <input type="tel" id="custContact" class="form-input" placeholder="Contact Number">
           </div>
 
+          <div class="option-group">
+            <strong>How would you like to get your order?</strong>
+            <label>
+              <input type="radio" name="orderType" value="Collection" onchange="renderCart()" checked> 
+              Collection
+            </label>
+            <label>
+              <input type="radio" name="orderType" value="Delivery" onchange="renderCart()"> 
+              Delivery
+            </label>
+            
+            <div id="deliveryAreaWrapper" style="display: none;">
+              <select class="form-input" id="deliveryArea" onchange="renderCart()">
+                <option value="5">Stox (R5 Delivery)</option>
+                <option value="5">City (R5 Delivery)</option>
+                <option value="15">Magalini (R15 Delivery)</option>
+                <option value="20">Town (R20 Delivery)</option>
+              </select>
+              <textarea id="custAddress" class="form-input" placeholder="Delivery Address" style="resize: vertical; min-height: 60px;"></textarea>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <strong>Condiments (Free)</strong>
+            <div>
+              <label><input type="checkbox" name="condiment" value="Tomato Sauce"> Tomato</label>
+              <label><input type="checkbox" name="condiment" value="Mustard"> Mustard</label>
+              <label><input type="checkbox" name="condiment" value="Salt"> Salt</label>
+              <label><input type="checkbox" name="condiment" value="Vinegar"> Vinegar</label>
+            </div>
+          </div>
+          
         </div>
 
-      </div>
+      </div> <!-- /cart-body -->
 
 
-      <div class="cart-foot">
+      <div class="cart-foot" id="cartFoot" style="display: none;">
 
-        <div class="total-row">
-
-          <span>
-            Total
-          </span>
-
-          <strong id="cartTotal">
-            R0
-          </strong>
-
+        <div id="cartCalculations">
+          <!-- Totals injected via JS -->
         </div>
+
+        <button
+          class="btn btn-secondary checkout"
+          id="continueShoppingBtn"
+          type="button"
+          style="margin-bottom: 8px;"
+        >
+          + Add more items
+        </button>
 
         <button
           class="btn btn-primary checkout"
           id="checkoutBtn"
           type="button"
         >
-          Checkout on WhatsApp ↗
+          Confirm Order ↗
         </button>
 
-        <p class="cart-note">
-          Your order will open in WhatsApp
-          as a pre-filled message.
+        <p class="cart-note" style="margin-top: 10px; color: var(--gold); font-weight: 600;">
+          Disclaimer: Your order will be ready in 15min to 60min.
         </p>
 
       </div>
@@ -1603,408 +1836,322 @@
 
 
   <!-- =========================
+       RECEIPT MODAL (PRE-WHATSAPP)
+  ========================== -->
+  <div class="cart-overlay receipt-overlay" id="receiptModal" aria-hidden="true">
+    <div class="receipt-card">
+      <h3>Order Summary</h3>
+      <p style="text-align: center; color: #aaa; font-size: 0.85rem; margin-top: -5px; margin-bottom: 0;">
+        Review your order before sending to WhatsApp.
+      </p>
+      
+      <div id="receiptContent" class="receipt-content">
+        <!-- Injected via JS -->
+      </div>
+      
+      <div class="receipt-actions">
+        <button class="btn btn-secondary" id="closeReceiptBtn" type="button">Edit Order</button>
+        <button class="btn btn-primary" id="confirmWhatsappBtn" type="button">Confirm & Send ↗</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================
        JAVASCRIPT
   ========================== -->
 
   <script>
+    
+    // ==========================================
+    // PROMO SETTINGS
+    // Change IS_PROMO_ACTIVE to false when you reach 7 customers
+    // ==========================================
+    const IS_PROMO_ACTIVE = true;
 
-    const WHATSAPP_NUMBER = "27647925594";
+    const WHATSAPP_NUMBER = "27742814132"; // Updated Number
 
     const cart = [];
+    let pendingWhatsAppUrl = "";
 
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartItems = document.getElementById("cartItems");
+    const cartOptions = document.getElementById("cartOptions");
+    const cartFoot = document.getElementById("cartFoot");
+    const cartCount = document.getElementById("cartCount");
+    const cartCalculations = document.getElementById("cartCalculations");
+    
+    const receiptModal = document.getElementById("receiptModal");
+    const receiptContent = document.getElementById("receiptContent");
 
-    const cartOverlay =
-      document.getElementById("cartOverlay");
-
-    const cartItems =
-      document.getElementById("cartItems");
-
-    const cartTotal =
-      document.getElementById("cartTotal");
-
-    const cartCount =
-      document.getElementById("cartCount");
-
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     function money(value) {
       return `R${value}`;
     }
 
-
+    // Standard add to cart
     function addToCart(name, price) {
-
-      const existing =
-        cart.find(item => item.name === name);
-
-
+      // Group items by exact name and price
+      const existing = cart.find(item => item.name === name && item.price === price);
+      
       if (existing) {
-
         existing.qty++;
-
       } else {
-
         cart.push({
           name: name,
           price: Number(price),
           qty: 1
         });
-
       }
 
-
       renderCart();
-
       openCart();
     }
 
+    // Custom price add to cart
+    function addCustomToCart(name, inputId) {
+      const priceInput = document.getElementById(inputId);
+      const price = parseFloat(priceInput.value);
+      
+      if (isNaN(price) || price < 20) {
+        alert(`The minimum price for ${name} is R20.`);
+        return;
+      }
+      
+      addToCart(name, price);
+    }
 
-    function changeQty(name, amount) {
+    function changeQty(index, amount) {
+      if (!cart[index]) return;
 
-      const item =
-        cart.find(item => item.name === name);
+      cart[index].qty += amount;
 
-      if (!item) return;
-
-
-      item.qty += amount;
-
-
-      if (item.qty <= 0) {
-
-        const index =
-          cart.findIndex(
-            item => item.name === name
-          );
-
+      if (cart[index].qty <= 0) {
         cart.splice(index, 1);
       }
-
 
       renderCart();
     }
 
-
     function renderCart() {
-
-      const totalItems =
-        cart.reduce(
-          (sum, item) => sum + item.qty,
-          0
-        );
-
-
-      const total =
-        cart.reduce(
-          (sum, item) =>
-            sum + item.price * item.qty,
-          0
-        );
-
-
-      cartCount.textContent =
-        totalItems;
-
-      cartTotal.textContent =
-        money(total);
-
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      let subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      
+      cartCount.textContent = totalItems;
 
       if (cart.length === 0) {
-
+        cartOptions.style.display = "none";
+        cartFoot.style.display = "none";
+        
         cartItems.innerHTML = `
-
           <div class="empty-cart">
-
             <div>
-
-              <div style="font-size:2rem;">
-                ＋
-              </div>
-
-              <strong>
-                Your order is empty
-              </strong>
-
-              <p>
-                Add something tasty
-                from the menu.
-              </p>
-
+              <div style="font-size:2rem;">＋</div>
+              <strong>Your order is empty</strong>
+              <p>Add something tasty from the menu.</p>
             </div>
-
           </div>
-
         `;
+        return;
+      }
+      
+      cartOptions.style.display = "flex";
+      cartFoot.style.display = "block";
 
+      // Render items
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div>
+            <strong>${escapeHtml(item.name)}</strong>
+            <small>${money(item.price)} each</small>
+            <div class="cart-controls">
+              <button class="qty-btn" type="button" onclick="changeQty(${index}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" type="button" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+          <div class="cart-item-price">
+            ${money(item.price * item.qty)}
+          </div>
+        </div>
+      `).join("");
+
+      // Calculate Delivery Fee
+      let deliveryFee = 0;
+      const orderType = document.querySelector('input[name="orderType"]:checked').value;
+      const deliveryAreaWrapper = document.getElementById("deliveryAreaWrapper");
+      const deliveryAreaSelect = document.getElementById("deliveryArea");
+      
+      if (orderType === "Delivery") {
+        deliveryAreaWrapper.style.display = "block";
+        deliveryFee = Number(deliveryAreaSelect.value);
+      } else {
+        deliveryAreaWrapper.style.display = "none";
+      }
+
+      // Check Promo: Fried Chips OR Spiral Chips OR Milkshake
+      let promoDiscount = 0;
+      
+      if (IS_PROMO_ACTIVE) {
+        const hasFriedChips = cart.some(item => item.name === "Fried chips");
+        const hasSpiralChips = cart.some(item => item.name === "Spiral Chips");
+        const hasMilkshake = cart.some(item => item.name === "Milkshake");
+        
+        if (hasFriedChips || hasSpiralChips || hasMilkshake) {
+          promoDiscount = 7;
+        }
+      }
+      
+      const grandTotal = subtotal + deliveryFee - promoDiscount;
+      const oldTotalDisplay = subtotal + deliveryFee;
+      
+      // Build totals HTML
+      let totalsHTML = `<div class="total-row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div>`;
+      
+      if (deliveryFee > 0) {
+        const areaName = deliveryAreaSelect.options[deliveryAreaSelect.selectedIndex].text.split(' (')[0];
+        totalsHTML += `<div class="total-row"><span>Delivery (${areaName})</span><strong>${money(deliveryFee)}</strong></div>`;
+      }
+      
+      if (promoDiscount > 0) {
+        totalsHTML += `<div class="total-row"><span class="discount-text">R7 special applied</span><strong class="discount-text">-${money(promoDiscount)}</strong></div>`;
+        totalsHTML += `<div class="total-row grand-total"><span>Total</span><strong id="cartTotalValue" data-total="${grandTotal}"><del style="color: #666; font-size: 0.8rem; margin-right: 8px; font-weight: 500;">${money(oldTotalDisplay)}</del> ${money(grandTotal)}</strong></div>`;
+      } else {
+        totalsHTML += `<div class="total-row grand-total"><span>Total</span><strong id="cartTotalValue" data-total="${grandTotal}">${money(grandTotal)}</strong></div>`;
+      }
+
+      cartCalculations.innerHTML = totalsHTML;
+    }
+
+    function escapeHtml(value) {
+      return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+    }
+
+    function openCart() {
+      cartOverlay.classList.add("open");
+      cartOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeCart() {
+      cartOverlay.classList.remove("open");
+      cartOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.getElementById("openCart").addEventListener("click", openCart);
+    document.getElementById("closeCart").addEventListener("click", closeCart);
+    document.getElementById("continueShoppingBtn").addEventListener("click", closeCart);
+    
+    cartOverlay.addEventListener("click", event => {
+      // Don't close if they click inside the actual drawer side-panel
+      if (event.target === cartOverlay) closeCart();
+    });
+
+    receiptModal.addEventListener("click", event => {
+      // Close receipt if they click the dim background outside the box
+      if (event.target === receiptModal) {
+        receiptModal.classList.remove("open");
+        receiptModal.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        if (receiptModal.classList.contains("open")) {
+          receiptModal.classList.remove("open");
+          receiptModal.setAttribute("aria-hidden", "true");
+        } else {
+          closeCart();
+        }
+      }
+    });
+
+    // Generate Receipt & Show Modal 
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      if (cart.length === 0) return;
+
+      const name = document.getElementById("custName").value.trim();
+      const contact = document.getElementById("custContact").value.trim();
+      const address = document.getElementById("custAddress").value.trim();
+      const orderType = document.querySelector('input[name="orderType"]:checked').value;
+
+      // Validation
+      if (!name || !contact) {
+        alert("Please enter your name and contact number before continuing.");
         return;
       }
 
-
-      cartItems.innerHTML =
-        cart.map(item => `
-
-          <div class="cart-item">
-
-            <div>
-
-              <strong>
-                ${escapeHtml(item.name)}
-              </strong>
-
-              <small>
-                ${money(item.price)} each
-              </small>
-
-              <div class="cart-controls">
-
-                <button
-                  class="qty-btn"
-                  type="button"
-                  data-action="minus"
-                  data-name="${escapeAttr(item.name)}"
-                >
-                  −
-                </button>
-
-                <span>
-                  ${item.qty}
-                </span>
-
-                <button
-                  class="qty-btn"
-                  type="button"
-                  data-action="plus"
-                  data-name="${escapeAttr(item.name)}"
-                >
-                  +
-                </button>
-
-              </div>
-
-            </div>
-
-            <div class="cart-item-price">
-              ${money(item.price * item.qty)}
-            </div>
-
-          </div>
-
-        `).join("");
-
-
-      cartItems
-        .querySelectorAll(".qty-btn")
-        .forEach(button => {
-
-          button.addEventListener(
-            "click",
-            () => {
-
-              changeQty(
-                button.dataset.name,
-                button.dataset.action === "plus"
-                  ? 1
-                  : -1
-              );
-
-            }
-          );
-
-        });
-
-    }
-
-
-    function escapeHtml(value) {
-
-      return value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-    }
-
-
-    function escapeAttr(value) {
-
-      return escapeHtml(value);
-
-    }
-
-
-    function openCart() {
-
-      cartOverlay.classList.add("open");
-
-      cartOverlay.setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeCart() {
-
-      cartOverlay.classList.remove("open");
-
-      cartOverlay.setAttribute(
-        "aria-hidden",
-        "true"
-      );
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    /* ADD TO CART BUTTONS */
-
-    document
-      .querySelectorAll(".add-btn")
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            addToCart(
-              button.dataset.name,
-              button.dataset.price
-            );
-
-          }
-        );
-
-      });
-
-
-    /* OPEN CART */
-
-    document
-      .getElementById("openCart")
-      .addEventListener(
-        "click",
-        openCart
-      );
-
-
-    /* CLOSE CART */
-
-    document
-      .getElementById("closeCart")
-      .addEventListener(
-        "click",
-        closeCart
-      );
-
-
-    /* CLICK OUTSIDE CART */
-
-    cartOverlay.addEventListener(
-      "click",
-      event => {
-
-        if (
-          event.target === cartOverlay
-        ) {
-          closeCart();
-        }
-
+      if (orderType === "Delivery" && !address) {
+        alert("Please enter your delivery address.");
+        return;
       }
-    );
 
-
-    /* ESC KEY */
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Escape") {
-          closeCart();
-        }
-
+      // Build Message Payload
+      let customerDetails = `*Name:* ${name}\n*Contact:* ${contact}`;
+      let deliveryText = "";
+      
+      if (orderType === "Delivery") {
+        const select = document.getElementById("deliveryArea");
+        // Only append the Area name and address to customer Details, removing the redundant line
+        customerDetails += `\n*Area:* ${select.options[select.selectedIndex].text.split(' (')[0]}\n*Address:* ${address}`;
+      } else {
+        customerDetails += `\n*Type:* Collection`;
       }
-    );
 
-
-    /* CHECKOUT */
-
-    document
-      .getElementById("checkoutBtn")
-      .addEventListener(
-        "click",
-        () => {
-
-          if (cart.length === 0) {
-
-            alert(
-              "Your order is empty. Add something from the menu first."
-            );
-
-            return;
-          }
-
-
-          const total =
-            cart.reduce(
-              (sum, item) =>
-                sum + item.price * item.qty,
-              0
-            );
-
-
-          const orderLines =
-            cart.map(item =>
-              `• ${item.qty} × ${item.name} — ${money(
-                item.price * item.qty
-              )}`
-            );
-
-
-          const message =
-
-`Hi KASI Delica! 👋
-
-I'd like to place this order:
-
-${orderLines.join("\n")}
-
-Total: ${money(total)}
-
-Please confirm my order. Thank you!`;
-
-
-          const whatsappURL =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-
-          window.open(
-            whatsappURL,
-            "_blank",
-            "noopener,noreferrer"
-          );
-
+      const orderLines = cart.map(item => `• ${item.qty} × ${item.name} (${money(item.price)} each)`);
+      
+      const selectedCondiments = Array.from(document.querySelectorAll('input[name="condiment"]:checked')).map(cb => cb.value);
+      const condimentsText = selectedCondiments.length > 0 ? selectedCondiments.join(", ") : "None";
+      const total = document.getElementById("cartTotalValue").getAttribute("data-total");
+      
+      let promoText = "";
+      if (IS_PROMO_ACTIVE) {
+        const hasFriedChips = cart.some(item => item.name === "Fried chips");
+        const hasSpiralChips = cart.some(item => item.name === "Spiral Chips");
+        const hasMilkshake = cart.some(item => item.name === "Milkshake");
+        if (hasFriedChips || hasSpiralChips || hasMilkshake) {
+          promoText = "\n\n*Discount:* -R7 (R7 special applied)";
         }
-      );
+      }
 
+      // What gets sent to WhatsApp
+      const whatsappMessage = `Hi KASI Delica! 👋\n\nI'd like to place an order:\n\n${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}${promoText}\n\n*Total:* ${money(total)}\n\nPlease confirm my order. Thank you!`;
 
-    /* INITIAL CART */
+      // What gets shown on the receipt preview
+      const receiptMessage = `${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}${promoText}\n\n*Total:* ${money(total)}`;
 
+      // Save URL for confirmation button
+      pendingWhatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
+      // Format receipt text (asterisks to bold) for the HTML Modal preview
+      let htmlPreview = escapeHtml(receiptMessage).replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+      
+      receiptContent.innerHTML = htmlPreview;
+      
+      // Open Receipt Modal
+      receiptModal.classList.add("open");
+      receiptModal.setAttribute("aria-hidden", "false");
+    });
+
+    // Edit Order Button (Closes receipt)
+    document.getElementById("closeReceiptBtn").addEventListener("click", () => {
+      receiptModal.classList.remove("open");
+      receiptModal.setAttribute("aria-hidden", "true");
+    });
+
+    // Final Confirmation Button (Sends to WhatsApp)
+    document.getElementById("confirmWhatsappBtn").addEventListener("click", () => {
+      if(pendingWhatsAppUrl) {
+        window.open(pendingWhatsAppUrl, "_blank", "noopener,noreferrer");
+      }
+    });
+
+    // Initialize
     renderCart();
 
   </script>
 
 </body>
 </html>
-```
