@@ -912,10 +912,6 @@
       font-size: 1.15rem;
     }
 
-    .discount-text {
-      color: #4CAF50 !important;
-    }
-
     .checkout {
       width: 100%;
     }
@@ -1669,7 +1665,7 @@
 
 
   <!-- =========================
-         FOOTER
+       FOOTER
   ========================== -->
 
   <footer id="contact">
@@ -1918,7 +1914,7 @@
   ========================== -->
   <div class="cart-overlay receipt-overlay" id="receiptModal" aria-hidden="true">
     <div class="receipt-card">
-      <h3>Order Summary</h3>
+      <h3 id="receiptTitle">Order Summary</h3>
       <p style="text-align: center; color: #aaa; font-size: 0.85rem; margin-top: -5px; margin-bottom: 0;">
         Review your order before sending to WhatsApp.
       </p>
@@ -1940,12 +1936,6 @@
   ========================== -->
 
   <script>
-    
-    // ==========================================
-    // PROMO SETTINGS
-    // Change IS_PROMO_ACTIVE to false when you want to turn off the discount
-    // ==========================================
-    const IS_PROMO_ACTIVE = true;
 
     const WHATSAPP_NUMBER = "27742814132"; // Updated Number
 
@@ -1961,6 +1951,7 @@
     
     const receiptModal = document.getElementById("receiptModal");
     const receiptContent = document.getElementById("receiptContent");
+    const receiptTitle = document.getElementById("receiptTitle");
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -2089,22 +2080,8 @@
       } else {
         deliveryAreaWrapper.style.display = "none";
       }
-
-      // Check Promo: ANY of Fried Chips, Spiral Chips, or Milkshake
-      let promoDiscount = 0;
       
-      if (IS_PROMO_ACTIVE) {
-        const hasFriedChips = cart.some(item => item.name === "Fried chips");
-        const hasSpiralChips = cart.some(item => item.name === "Spiral Chips");
-        const hasMilkshake = cart.some(item => item.name === "Milkshake");
-        
-        if (hasFriedChips || hasSpiralChips || hasMilkshake) {
-          promoDiscount = 7;
-        }
-      }
-      
-      const grandTotal = subtotal + deliveryFee - promoDiscount;
-      const oldTotalDisplay = subtotal + deliveryFee;
+      const grandTotal = subtotal + deliveryFee;
       
       // Build totals HTML
       let totalsHTML = `<div class="total-row"><span>Subtotal</span><strong>${money(subtotal)}</strong></div>`;
@@ -2114,12 +2091,7 @@
         totalsHTML += `<div class="total-row"><span>Delivery (${areaName})</span><strong>${money(deliveryFee)}</strong></div>`;
       }
       
-      if (promoDiscount > 0) {
-        totalsHTML += `<div class="total-row"><span class="discount-text">R7 special applied</span><strong class="discount-text">-${money(promoDiscount)}</strong></div>`;
-        totalsHTML += `<div class="total-row grand-total"><span>Total</span><strong id="cartTotalValue" data-total="${grandTotal}"><del style="color: #666; font-size: 0.8rem; margin-right: 8px; font-weight: 500;">${money(oldTotalDisplay)}</del> ${money(grandTotal)}</strong></div>`;
-      } else {
-        totalsHTML += `<div class="total-row grand-total"><span>Total</span><strong id="cartTotalValue" data-total="${grandTotal}">${money(grandTotal)}</strong></div>`;
-      }
+      totalsHTML += `<div class="total-row grand-total"><span>Total</span><strong id="cartTotalValue" data-total="${grandTotal}">${money(grandTotal)}</strong></div>`;
 
       cartCalculations.innerHTML = totalsHTML;
     }
@@ -2189,6 +2161,9 @@
         return;
       }
 
+      // Dynamic Title with Chosen Name
+      receiptTitle.textContent = `Order Summary for ${name}`;
+
       // Build Message Payload
       let customerDetails = `*Name:* ${name}\n*Contact:* ${contact}`;
       
@@ -2202,26 +2177,16 @@
       const condimentsText = selectedCondiments.length > 0 ? selectedCondiments.join(", ") : "None";
       const total = document.getElementById("cartTotalValue").getAttribute("data-total");
       
-      let promoText = "";
-      if (IS_PROMO_ACTIVE) {
-        const hasFriedChips = cart.some(item => item.name === "Fried chips");
-        const hasSpiralChips = cart.some(item => item.name === "Spiral Chips");
-        const hasMilkshake = cart.some(item => item.name === "Milkshake");
-        if (hasFriedChips || hasSpiralChips || hasMilkshake) {
-          promoText = "\n\n*Discount:* -R7 (R7 special applied)";
-        }
-      }
-
       let paymentDetails = `*Payment Method:* ${paymentMethod}`;
       if (paymentMethod === "Capitec Account") {
         paymentDetails += `\n(Capitec: 2228605553 - Mr A Mtsewu)\n⚠️ *Note:* Immediate payment & proof of payment required. Order considered only when money reflects.`;
       }
 
-      // What gets sent to WhatsApp
-      let whatsappMessage = `Hi KASI Delica! 👋\n\nI'd like to place an order for *${orderType}*:\n\n${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}${promoText}\n\n${paymentDetails}\n\n*Total:* ${money(total)}\n\nPlease confirm my order. Thank you!`;
+      // What gets sent to WhatsApp (Includes chosen name in greeting & Amajita note)
+      let whatsappMessage = `Hi KASI Delica! 👋\n\nHi, my name is *${name}*, and I'd like to place an order for *${orderType}*:\n\n${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}\n\n${paymentDetails}\n\n*Total:* ${money(total)}\n\nPlease confirm my order. Thank you!`;
 
-      // What gets shown on the receipt preview (no WhatsApp greeting or delivery line)
-      let receiptMessage = `${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}${promoText}\n\n${paymentDetails}\n\n*Total:* ${money(total)}`;
+      // What gets shown on the receipt preview
+      let receiptMessage = `${customerDetails}\n\n*Order Details:*\n${orderLines.join("\n")}\n\n*Condiments:* ${condimentsText}\n\n${paymentDetails}\n\n*Total:* ${money(total)}`;
 
       // Save URL for confirmation button
       pendingWhatsAppUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
