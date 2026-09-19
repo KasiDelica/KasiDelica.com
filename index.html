@@ -307,11 +307,58 @@
     }
 
     /* =========================
+       DIRECTIONS BANNER (BEFORE MENU)
+    ========================== */
+
+    .directions-banner {
+      background: linear-gradient(145deg, #141414, #0d0d0d);
+      border: 1px solid rgba(255,196,0,.25);
+      border-radius: var(--radius);
+      padding: 25px 30px;
+      margin: 40px auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .directions-info h3 {
+      margin: 0 0 5px 0;
+      font-family: Poppins, sans-serif;
+      font-size: 1.25rem;
+      color: var(--white);
+    }
+
+    .directions-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .map-btn {
+      background: var(--gold);
+      color: #080808;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: .2s;
+    }
+
+    .map-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
        SECTIONS
     ========================== */
 
     section {
-      padding: 95px 0;
+      padding: 75px 0;
     }
 
     .section-head {
@@ -369,12 +416,22 @@
       border-color: var(--border);
     }
 
+    .menu-card.unavailable {
+      opacity: 0.6;
+    }
+
+    .menu-card.unavailable:hover {
+      transform: none;
+      border-color: rgba(255,255,255,.07);
+    }
+
     .menu-image {
       height: 245px;
       margin: 9px;
       border-radius: 17px;
       overflow: hidden;
       background: #1a1a1a;
+      position: relative;
     }
 
     .menu-image img {
@@ -382,6 +439,21 @@
       height: 100%;
       display: block;
       object-fit: cover;
+    }
+
+    .unavailable-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.8);
+      color: #ff4d4d;
+      border: 1px solid #ff4d4d;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .menu-info {
@@ -429,6 +501,13 @@
       color: #080808;
     }
 
+    .add-btn.disabled {
+      background: rgba(255,255,255,.02);
+      border-color: rgba(255,255,255,.05);
+      color: #555;
+      cursor: not-allowed;
+    }
+
     /* Custom Price Inputs */
     .custom-price-container {
       display: flex;
@@ -470,73 +549,6 @@
       width: auto;
       flex: 0 0 70px;
       padding: 11px 0;
-    }
-
-    /* =========================
-       COMBOS
-    ========================== */
-
-    .combos-section {
-      background:
-        linear-gradient(
-          180deg,
-          transparent,
-          rgba(255,196,0,.025),
-          transparent
-        );
-    }
-
-    .combo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .combo-card {
-      min-height: 280px;
-      padding: 25px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,196,0,.16);
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,196,0,.08),
-          rgba(255,255,255,.025)
-        );
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: .2s;
-    }
-
-    .combo-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,196,0,.35);
-    }
-
-    .combo-number {
-      color: rgba(255,196,0,.6);
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .15em;
-    }
-
-    .combo-card h3 {
-      margin: 25px 0 10px;
-      font-size: 1.35rem;
-    }
-
-    .combo-card p {
-      color: #999;
-      font-size: .85rem;
-    }
-
-    .combo-price {
-      color: var(--gold);
-      font-family: Poppins, sans-serif;
-      font-size: 1.55rem;
-      font-weight: 800;
-      margin: 18px 0;
     }
 
     /* =========================
@@ -1204,7 +1216,23 @@
 
       <div class="container">
 
-        <div class="section-head">
+        <!-- GOOGLE MAP DIRECTIONS BANNER (BEFORE THE MENU) -->
+        <div class="directions-banner">
+          <div class="directions-info">
+            <h3>📍 Visit Us in Komga</h3>
+            <p>2854 Siviwe, Main road, Komga 4950</p>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
+            class="map-btn"
+            target="_blank"
+            rel="noopener"
+          >
+            Google Map Directions ↗
+          </a>
+        </div>
+
+        <div class="section-head" style="margin-top: 40px;">
 
           <div>
             <div class="section-kicker">
@@ -1217,17 +1245,15 @@
           </div>
 
           <p class="section-description">
-            Currently available fresh items.
-            Prices marked "+" can vary depending
-            on portion or toppings.
+            Explore our delicious menu items. Items marked unavailable are temporarily out of stock.
           </p>
 
         </div>
 
 
-        <div class="menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="menu-grid">
 
-          <!-- FRIED CHIPS (Custom Price) -->
+          <!-- FRIED CHIPS (Custom Price - Available) -->
 
           <article class="menu-card">
 
@@ -1276,7 +1302,7 @@
           </article>
 
 
-          <!-- SPIRAL CHIPS -->
+          <!-- SPIRAL CHIPS (Available) -->
 
           <article class="menu-card">
 
@@ -1320,7 +1346,7 @@
           </article>
 
 
-          <!-- MILKSHAKE -->
+          <!-- MILKSHAKE (Available) -->
 
           <article class="menu-card">
 
@@ -1357,6 +1383,92 @@
                 onclick="addToCart('Milkshake', 20)"
               >
                 Add to Order
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- MEATY BONES (Unavailable) -->
+
+          <article class="menu-card unavailable">
+
+            <div class="menu-image">
+              <div class="unavailable-badge">Unavailable</div>
+              <img
+                src="images/meaty bones.jpeg"
+                alt="Meaty bones"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Meaty Bones
+                </h3>
+
+                <span class="price" style="color: #666;">
+                  R20+
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Tender, saucy comfort food with that unmistakable kasi kick.
+              </p>
+
+              <button
+                class="add-btn disabled"
+                disabled
+              >
+                Out of Stock
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- DOMBOLO (Unavailable) -->
+
+          <article class="menu-card unavailable">
+
+            <div class="menu-image">
+              <div class="unavailable-badge">Unavailable</div>
+              <img
+                src="images/dombolo.jpeg"
+                alt="Dombolo"
+              >
+
+            </div>
+
+            <div class="menu-info">
+
+              <div class="menu-top">
+
+                <h3>
+                  Dombolo
+                </h3>
+
+                <span class="price" style="color: #666;">
+                  R20+
+                </span>
+
+              </div>
+
+              <p class="menu-desc">
+                Soft, filling and built for soaking up every bit of flavour.
+              </p>
+
+              <button
+                class="add-btn disabled"
+                disabled
+              >
+                Out of Stock
               </button>
 
             </div>
@@ -1494,26 +1606,15 @@
           <div>
 
             <strong>Address</strong>
-            
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <a
-                class="map-link"
-                href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
-                target="_blank"
-                rel="noopener"
-                style="font-weight: bold; color: var(--gold);"
-              >
-                📍 Google Map Directions ↗
-              </a>
-              <a
-                class="map-link"
-                href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
-                target="_blank"
-                rel="noopener"
-              >
-                2854 Siviwe, Main road, Komga 4950
-              </a>
-            </div>
+
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
+              target="_blank"
+              rel="noopener"
+            >
+              2854 Siviwe, Main road, Komga 4950
+            </a>
 
           </div>
 
@@ -1992,3 +2093,4 @@
   </script>
 
 </body>
+</html>
