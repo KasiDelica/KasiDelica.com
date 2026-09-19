@@ -1217,7 +1217,7 @@
           </div>
 
           <p class="section-description">
-            Add your favourites to your order.
+            Currently available fresh items.
             Prices marked "+" can vary depending
             on portion or toppings.
           </p>
@@ -1225,7 +1225,7 @@
         </div>
 
 
-        <div class="menu-grid">
+        <div class="menu-grid" style="grid-template-columns: repeat(3, 1fr);">
 
           <!-- FRIED CHIPS (Custom Price) -->
 
@@ -1320,99 +1320,6 @@
           </article>
 
 
-          <!-- MEATY BONES -->
-
-          <article class="menu-card">
-
-            <div class="menu-image">
-
-              <img
-                src="images/meaty bones.jpeg"
-                alt="Meaty bones"
-              >
-
-            </div>
-
-            <div class="menu-info">
-
-              <div class="menu-top">
-
-                <h3>
-                  Meaty Bones
-                </h3>
-
-                <span class="price">
-                  R20+
-                </span>
-
-              </div>
-
-              <p class="menu-desc">
-                Tender, saucy comfort food with
-                that unmistakable kasi kick.
-              </p>
-
-              <button
-                class="add-btn"
-                onclick="addToCart('Meaty Bones', 20)"
-              >
-                Add to Order
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- DOMBOLO (Custom Price) -->
-
-          <article class="menu-card">
-
-            <div class="menu-image">
-
-              <img
-                src="images/dombolo.jpeg"
-                alt="Dombolo"
-              >
-
-            </div>
-
-            <div class="menu-info">
-
-              <div class="menu-top">
-
-                <h3>
-                  Dombolo
-                </h3>
-
-                <span class="price">
-                  R20+
-                </span>
-
-              </div>
-
-              <p class="menu-desc">
-                Soft, filling and built for soaking. Enter your size (Min R20).
-              </p>
-
-              <div class="custom-price-container">
-                <div class="custom-price-wrapper">
-                  <span>R</span>
-                  <input type="number" id="price-dombolo" class="custom-price-input" min="20" value="20" step="1">
-                </div>
-                <button
-                  class="add-btn"
-                  onclick="addCustomToCart('Dombolo', 'price-dombolo')"
-                >
-                  Add
-                </button>
-              </div>
-
-            </div>
-
-          </article>
-
-
           <!-- MILKSHAKE -->
 
           <article class="menu-card">
@@ -1453,152 +1360,6 @@
               </button>
 
             </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         COMBOS
-    ========================== -->
-
-    <section
-      class="combos-section"
-      id="combos"
-    >
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-
-            <div class="section-kicker">
-              Combo deals
-            </div>
-
-            <h2>
-              More food. More value.
-            </h2>
-
-          </div>
-
-          <p class="section-description">
-            Easy choices when one item simply
-            isn't enough.
-          </p>
-
-        </div>
-
-
-        <div class="combo-grid">
-
-          <!-- COMBO 1 -->
-
-          <article class="combo-card">
-
-            <div>
-
-              <span class="combo-number">
-                COMBO 01
-              </span>
-
-              <h3>
-                Milkshake + Spiral + Fried Chips
-              </h3>
-
-              <p>
-                A cold milkshake with two
-                crispy chip favourites.
-              </p>
-
-            </div>
-
-            <div class="combo-price">
-              R50
-            </div>
-
-            <button
-              class="add-btn"
-              onclick="addToCart('R50 Milkshake, Spiral & Fried chips', 50)"
-            >
-              Add Combo
-            </button>
-
-          </article>
-
-
-          <!-- COMBO 2 -->
-
-          <article class="combo-card">
-
-            <div>
-
-              <span class="combo-number">
-                COMBO 02
-              </span>
-
-              <h3>
-                Russian Sausage + Spiral + Fried Chips
-              </h3>
-
-              <p>
-                A hearty, crunchy combo when
-                you're properly hungry.
-              </p>
-
-            </div>
-
-            <div class="combo-price">
-              R50
-            </div>
-
-            <button
-              class="add-btn"
-              onclick="addToCart('R50 Russian sausage, Spiral & Fried chips', 50)"
-            >
-              Add Combo
-            </button>
-
-          </article>
-
-
-          <!-- COMBO 3 -->
-
-          <article class="combo-card">
-
-            <div>
-
-              <span class="combo-number">
-                COMBO 03
-              </span>
-
-              <h3>
-                Lauded Saucy Combo
-              </h3>
-
-              <p>
-                Fried chips + spiral chips
-                with a saucy finish.
-              </p>
-
-            </div>
-
-            <div class="combo-price">
-              R30
-            </div>
-
-            <button
-              class="add-btn"
-              onclick="addToCart('R30 Lauded Saucy Combo (Fried chips & spiral chips)', 30)"
-            >
-              Add Combo
-            </button>
 
           </article>
 
@@ -1733,15 +1494,26 @@
           <div>
 
             <strong>Address</strong>
-
-            <a
-              class="map-link"
-              href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
-              target="_blank"
-              rel="noopener"
-            >
-              2854 Siviwe, Main road, Komga 4950
-            </a>
+            
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <a
+                class="map-link"
+                href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
+                target="_blank"
+                rel="noopener"
+                style="font-weight: bold; color: var(--gold);"
+              >
+                📍 Google Map Directions ↗
+              </a>
+              <a
+                class="map-link"
+                href="https://maps.app.goo.gl/LsdHdhaqZn2a3uv19"
+                target="_blank"
+                rel="noopener"
+              >
+                2854 Siviwe, Main road, Komga 4950
+              </a>
+            </div>
 
           </div>
 
@@ -2220,4 +1992,3 @@
   </script>
 
 </body>
-</html>
